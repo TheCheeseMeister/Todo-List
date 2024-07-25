@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.ToDo {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+}
+
+.sidebar {
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+}
+
+.sidebar > header {
+    font-size: 48px;
+    color: black;
+}
+
+.index {
+    background-color: rgb(199, 199, 199);
+}
+
+footer {
+    background-color: rgb(235, 235, 235);
+    color: black;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
