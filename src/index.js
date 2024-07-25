@@ -7,6 +7,11 @@ const projects = [];
 
 function addNewProject() {
     projects.push(createProject("Family"));
+
+    /*const temp = document.createElement("button");
+    temp.textContent = projects[0].title;
+    
+    sidebar.appendChild(temp);*/
 }
 
 addNewProject("Family");
