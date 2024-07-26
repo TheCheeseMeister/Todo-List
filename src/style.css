@@ -21,13 +21,73 @@ body {
 
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: flex-start;
+}
+
+.sidebar * {
+    height: auto;
 }
 
 .sidebar > header {
     font-size: 48px;
+    text-align: center;
     color: black;
+    margin-bottom: 24px;
+}
+
+.sidebar > .add {
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.addButton {
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(123, 123, 179);
+    color: white;
+    font-size: 22px;
+    padding: 10px;
+
+    transition: all 0.2s ease-out;
+}
+
+.addButton:hover {
+    background-color: rgb(60, 60, 121);
+    cursor: pointer;
+}
+
+.projects > h3 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.projects > button {
+    border: none;
+    border-top: 2px solid rgb(190, 190, 190);
+    background-color: white;
+    padding: 10px 0;
+    font-size: 16px;
+    width: 100%;
+    align-self: center;
+    
+    transition: all 0.2s ease-out;
+}
+
+.projects > button:nth-last-of-type(1) {
+    border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.projects > button:hover {
+    color: white;
+    background-color: rgb(150, 176, 224);
+    cursor: pointer;
+    border-top-color: rgb(32, 44, 221);
+    border-bottom-color: rgb(32, 44, 221);
+}
+
+.projects > button:hover + button {
+    border-top-color: rgb(32, 44, 221);
 }
 
 .index {
