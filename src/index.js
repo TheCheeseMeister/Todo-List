@@ -7,6 +7,7 @@ const projects = [];
 
 /*const addProject = document.getElementById('addProject');*/
 const addTask = document.getElementById('addTask');
+const addForm = document.getElementById('addForm');
 
 const addTaskButton = document.getElementById('addTaskButton');
 addTaskButton.addEventListener("click", () => {
@@ -14,8 +15,14 @@ addTaskButton.addEventListener("click", () => {
 });
 
 // Add Task Form Button
-addTask.children[0].children[2].addEventListener("click", () => {
+addTask.children[0].children[2].addEventListener("click", (event) => {
+    event.preventDefault();
     addTask.close();
+
+    const formData = new FormData(addForm, addTask.children[0].children[2]);
+    // formData.get('title');
+    // addTaskToProject(project, formdata stuff);
+    // need dropdown for existing projects
 });
 
 function addNewProject() {
