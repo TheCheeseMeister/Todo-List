@@ -11,7 +11,7 @@
             <header>To-Do List</header>
 
             <div class="add">
-                <button type="button" class="addButton">+ Add Task</button>
+                <button type="button" class="addButton" id="addTaskButton">+ Add Task</button>
             </div>
 
             <div class="projects">
@@ -29,5 +29,40 @@
     <footer>
         <p>Made by TheCheeseMeister</p>
     </footer>
+
+    <dialog class="addForm" id="addTask">
+        <form action="">
+            <h1>Add a New Task</h1>
+
+            <!--Name Desc DueDate Priority-->
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <td><input type="text" name="title" id="title" placeholder="i.e. The Maze Runner" required></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><textarea name="description" id="description" placeholder="..." required></textarea></td>
+                </tr>
+                <tr>
+                    <th>Due Date</th>
+                    <td><input type="date" name="dueDate" id="dueDate" min="2024-07-26"></td>
+                </tr>
+                <tr>
+                    <th>Priority</th>
+                    <td>
+                        <input type="radio" name="priority" id="high" value="high">
+                        <label for="high">High</label>
+
+                        <input type="radio" name="priority" id="low" value="low">
+                        <label for="low">Low</label>
+                    </td>
+                </tr>
+                <!--Dropdown for different projects-->
+            </table>
+
+            <button type="button">Add Task</button>
+        </form>
+    </dialog>
 </body>
 </html>

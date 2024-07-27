@@ -5,6 +5,19 @@ import { addTaskToProject } from './project';
 const sidebar = document.getElementById('sidebar');
 const projects = [];
 
+/*const addProject = document.getElementById('addProject');*/
+const addTask = document.getElementById('addTask');
+
+const addTaskButton = document.getElementById('addTaskButton');
+addTaskButton.addEventListener("click", () => {
+    addTask.showModal();
+});
+
+// Add Task Form Button
+addTask.children[0].children[2].addEventListener("click", () => {
+    addTask.close();
+});
+
 function addNewProject() {
     projects.push(createProject("Family"));
 

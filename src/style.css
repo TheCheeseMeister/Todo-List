@@ -107,3 +107,62 @@ footer > p {
     justify-content: center;
     align-items: center;
 }
+
+/* Dialogs */
+
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 500px;
+    width: 400px;
+
+    padding: 24px;
+
+    text-align: center;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.39);
+}
+
+dialog > form {
+    height: auto;
+}
+
+.addForm > form > h1 {
+    margin-bottom: 24px;
+}
+
+td, th {
+    text-align: left;
+    padding: 10px 5px;
+}
+
+th {
+    text-align: right;
+
+    font-size: 18px;
+}
+
+td > input, textarea {
+    font-size: 18px;
+}
+
+.addForm > form > button {
+    color: white;
+    background-color: rgb(123, 123, 179);
+    border: none;
+    border-radius: 10px;
+
+    font-size: 18px;
+    padding: 16px;
+
+    transition: all 0.2s ease-out;
+}
+
+.addForm > form > button:hover {
+    background-color: rgb(60, 60, 121);
+    cursor: pointer;
+}
