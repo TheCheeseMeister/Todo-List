@@ -90,9 +90,67 @@ body {
     border-top-color: rgb(32, 44, 221);
 }
 
+/* Main Content */
+
 .index {
-    background-color: rgb(199, 199, 199);
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(179, 213, 221);
+
+    padding: 70px;
 }
+
+.index > h1 {
+    font-size: 30px;
+    background-color: white;
+    margin-right: auto;
+
+    padding: 16px;
+
+    border-radius: 15px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: white;
+    margin: 8px 0;
+    padding: 16px;
+
+    font-size: 20px;
+
+    border-radius: 15px;
+}
+
+.task-main {
+    display: flex;
+    gap: 8px;
+}
+
+.task-main > .date {
+    margin-left: auto;
+    margin-right: 8px;
+}
+
+.task:hover {
+    cursor: pointer;
+    background-color: rgb(237, 238, 238);
+}
+
+.task-desc {
+    visibility: collapse;
+}
+
+.selected {
+    visibility: visible;
+}
+
+.index * {
+    height: auto;
+}
+
+/* Footer */
 
 footer {
     background-color: rgb(235, 235, 235);
