@@ -90,6 +90,12 @@ body {
     border-top-color: rgb(32, 44, 221);
 }
 
+.addProj {
+    position: absolute;
+    transform: translateX(170px) translateY(345px);
+    scale: 0.7
+}
+
 /* Main Content */
 
 .index {

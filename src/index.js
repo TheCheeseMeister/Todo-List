@@ -32,6 +32,14 @@ addTask.children[0].children[3].addEventListener("click", (event) => {
     event.preventDefault();
     addTask.close();
 
+    const formData = new FormData(addForm, addTask.children[0].children[3]);
+    let tempProj = projects.find((ele) => ele.title == formData.get('selectProj'));
+    addTaskToProject(tempProj, formData.get('title'), formData.get('description'), formData.get('dueDate'), formData.get('priority'));
+
+    if (currDisplayedProject == project) {
+        displayProject(project);
+    }
+
     //const formData = new FormData(addForm, addTask.children[0].children[2]);
     // formData.get('title');
     // addTaskToProject(project, formdata stuff);
@@ -41,11 +49,33 @@ addTask.children[0].children[3].addEventListener("click", (event) => {
 
 // Adding new projects
 
+const addProjForm = document.getElementById("addProject");
+
+const addProjButton = document.getElementById("addProjButton");
+addProjButton.addEventListener("click", () => {
+    addProjForm.showModal();
+});
+
+addProjForm.children[0].children[3].addEventListener("click", (event) => {
+    event.preventDefault();
+    addProjForm.close();
+
+    const title = event.target.parentNode.children[2].value
+    addNewProject(title);
+
+    addProjForm.children[0].reset();
+})
+
 function addNewProject(text) {
     projects.push(createProject(text));
 
     const temp = document.createElement("button");
     temp.textContent = text
+    temp.addEventListener("click", () => {
+        let project = projects.find((ele) => ele.title == temp.textContent);
+
+        displayProject(project);
+    });
     
     sidebar.children[2].appendChild(temp);
 }
@@ -60,7 +90,8 @@ addTaskToProject(projects[1], "Finish ToDo List", "It's important", "yeah", "mhm
 
 const mainContent = document.getElementById("main-content");
 
-function buildTask(project) {
+function buildTask(task) {
+    console.log(task);
     // Container
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("task");
@@ -79,13 +110,15 @@ function buildTask(project) {
     taskMain.appendChild(finished);
 
     const taskTitle = document.createElement("p");
-    taskTitle.textContent = projects[0].tasks[0].getName();
+    //taskTitle.textContent = projects[0].tasks[0].getName();
+    taskTitle.textContent = task.getName();
 
     taskMain.appendChild(taskTitle);
 
     const taskDueDate = document.createElement("p");
     taskDueDate.classList.add("date");
-    taskDueDate.textContent = projects[0].tasks[0].getDueDate();
+    //taskDueDate.textContent = projects[0].tasks[0].getDueDate();
+    taskDueDate.textContent = task.getDueDate();
 
     taskMain.appendChild(taskDueDate);
 
@@ -96,7 +129,8 @@ function buildTask(project) {
     const taskDesc = document.createElement("p");
     taskDesc.classList.add("task-desc");
     taskDesc.id = "task-desc";
-    taskDesc.textContent = projects[0].tasks[0].getDesc();
+    //taskDesc.textContent = projects[0].tasks[0].getDesc();
+    taskDesc.textContent = task.getDesc();
 
     taskContainer.addEventListener("click", () => {
         taskDesc.classList.toggle("selected");
@@ -113,10 +147,15 @@ function displayProject(project) {
     const heading = document.createElement("h1");
     heading.textContent = project.title;
 
-    // add task description
-
     mainContent.appendChild(heading);
-    mainContent.appendChild(buildTask(project));
+    
+    for (let task of project.tasks) {
+        mainContent.appendChild(buildTask(task));
+    }
+
+    currDisplayedProject = project;
 }
 
 displayProject(projects[0]);
+
+let currDisplayedProject = null;
