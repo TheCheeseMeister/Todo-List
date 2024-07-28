@@ -56,9 +56,67 @@ addTaskToProject(projects[0], "Brush Teeth", "Really get in there", "3 Minutes",
 addNewProject("Work");
 addTaskToProject(projects[1], "Finish ToDo List", "It's important", "yeah", "mhm");
 
-const testingTask = document.getElementById('task');
-const testingTaskDesc = document.getElementById('task-desc');
+// Display project using tasks built into elements
 
-testingTask.addEventListener("click", () => {
-    testingTaskDesc.classList.toggle("selected");
-});
+const mainContent = document.getElementById("main-content");
+
+function buildTask(project) {
+    // Container
+    const taskContainer = document.createElement("div");
+    taskContainer.classList.add("task");
+    taskContainer.setAttribute("id", "task");
+
+    // Main Task
+    const taskMain = document.createElement("div");
+    taskMain.classList.add("task-main");
+
+    // Checkbox for finished task
+    const finished = document.createElement("input");
+    finished.type = "checkbox";
+    finished.name = "finished";
+    finished.id = "finished";
+
+    taskMain.appendChild(finished);
+
+    const taskTitle = document.createElement("p");
+    taskTitle.textContent = projects[0].tasks[0].getName();
+
+    taskMain.appendChild(taskTitle);
+
+    const taskDueDate = document.createElement("p");
+    taskDueDate.classList.add("date");
+    taskDueDate.textContent = projects[0].tasks[0].getDueDate();
+
+    taskMain.appendChild(taskDueDate);
+
+    taskContainer.appendChild(taskMain);
+
+    // Task description is separate from task main
+    
+    const taskDesc = document.createElement("p");
+    taskDesc.classList.add("task-desc");
+    taskDesc.id = "task-desc";
+    taskDesc.textContent = projects[0].tasks[0].getDesc();
+
+    taskContainer.addEventListener("click", () => {
+        taskDesc.classList.toggle("selected");
+    });
+
+    taskContainer.appendChild(taskDesc);
+
+    return taskContainer;
+}
+
+function displayProject(project) {
+    mainContent.innerHTML = '';
+
+    const heading = document.createElement("h1");
+    heading.textContent = project.title;
+
+    // add task description
+
+    mainContent.appendChild(heading);
+    mainContent.appendChild(buildTask(project));
+}
+
+displayProject(projects[0]);
